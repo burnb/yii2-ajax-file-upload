@@ -11,13 +11,8 @@ $this->title = 'File Uploads';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="file-upload-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create File Upload', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+    <p><?= Html::a('Create File Upload', ['create'], ['class' => 'btn btn-success']) ?></p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel'  => null,

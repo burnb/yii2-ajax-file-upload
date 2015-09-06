@@ -23,11 +23,11 @@ use yii\web\UploadedFile;
  * public function behaviors() {
  *     return [
  *          ...,
-'fileBehavior' => [
-'class' => FileBehavior::className(),
-'fileField' => 'file',
-'fileNameField' => 'filename',
-]
+ * 'fileBehavior' => [
+ * 'class' => FileBehavior::className(),
+ * 'fileField' => 'file',
+ * 'fileNameField' => 'filename',
+ * ]
  *     ]
  * }
  *
@@ -125,7 +125,7 @@ class FileBehavior extends Behavior
         if ($this->pathMethod) {
             return call_user_func([$this->owner, $this->pathMethod]);
         }
-        $userId = !$this->owner->getAttribute($this->subFolder) ? '' : $this->owner->getAttribute($this->subFolder). "/";
+        $userId = !$this->owner->getAttribute($this->subFolder) ? '' : $this->owner->getAttribute($this->subFolder) . "/";
         return \Yii::getAlias($this->storage . '/' . $this->owner->formName() . '/' . $userId . $this->owner->primaryKey);
     }
 
@@ -140,7 +140,7 @@ class FileBehavior extends Behavior
             throw new NotFoundHttpException;
         }
         if (ob_get_contents()) ob_end_clean();
-        header('Content-Type: '. FileHelper::getMimeType($file), true);
+        header('Content-Type: ' . FileHelper::getMimeType($file), true);
         header('Content-Length: ' . filesize($file));
 
         readfile($file);
@@ -178,7 +178,8 @@ class FileBehavior extends Behavior
     public static function purify($value)
     {
         switch (gettype($value)) {
-            case 'string' : $value = HtmlPurifier::process($value);
+            case 'string' :
+                $value = HtmlPurifier::process($value);
                 break;
             case 'array' :
                 foreach ($value as $k => $v) {

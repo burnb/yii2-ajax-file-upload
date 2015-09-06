@@ -11,21 +11,21 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php $form = ActiveForm::begin([
-    'id' => 'file-upload',
+    'id'                     => 'file-upload',
     'enableClientValidation' => true,
-    'fieldConfig' => [
-        'template' => '{label}<div class="error-prompted" data-placement="top"><div class="error">{error}</div></div>{input}',
+    'fieldConfig'            => [
+        'template'     => '{label}<div class="error-prompted" data-placement="top"><div class="error">{error}</div></div>{input}',
         'inputOptions' => ['class' => 'form-control'],
     ],
-    'options' => [
-        'class' => 'form',
-        'enctype'=>'multipart/form-data'
+    'options'                => [
+        'class'   => 'form',
+        'enctype' => 'multipart/form-data'
     ]
 ]); ?>
-    <?= $form->field($model, 'text')->textarea(); ?>
-    <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-        'options' => [
-            'multiple' => false
-        ]
-    ]);?>
+<?= $form->field($model, 'text')->textarea(); ?>
+<?= $form->field($model, 'file')->widget(FileInput::classname(), [
+    'options' => [
+        'multiple' => false
+    ]
+]); ?>
 <?php ActiveForm::end(); ?>
